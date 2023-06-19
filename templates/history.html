@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}
+    History
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <table style="width:100%" class="table" id="history">
+            <caption>User Signed In: <b>{{ table_user[0]["username"] }}</b></caption>
+            <tr>
+                <th>STOCK</th>
+                <th>QUANTITY</th>
+                <th>PRICE</th>
+                <th>DATE</th>
+            </tr>
+            {% for stock in table_recites %}
+            <tr>
+                <td>{{ table_recites[loop.index - 1]["stock"] }}</td>
+                <td>{{ table_recites[loop.index - 1]["quantity"]}}</td>
+                <td>{{ table_recites[loop.index - 1]["price"]|usd}}</td>
+                <td>{{ table_recites[loop.index - 1]["date"]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <table style="width:100%" class="table" id="index">
+        <caption>User Signed In: <b>{{ table_user[0]["username"] }}</b></caption>
+        <tr>
+            <th>Stock Symbols:</th>
+            <th># of Shares:</th>
+            <th>Price Of Share:</th>
+            <th>Total Price:</th>
+        </tr>
+        {% for symbol in table_total_stocks %}
+        <tr><td>{{ table_total_stocks[loop.index - 1]["stock"]|e }}</td><td>{{ table_total_stocks[loop.index - 1]["quantity"]|e }}</td>
+        <td>{{ prices[loop.index - 1]|usd }}</td><td>{{ mult_total[loop.index - 1]|usd}}</td></tr>
+        {% endfor %}
+    <form>
+        <th>Total:</th>
+        <th>Cash:</th>
+        <tr><td>{{ total_money|usd }}</td>
+        <td>{{ cash|usd }}</td></tr>
+    </form>
+
+    </table>
+</div>
+{% endblock %}
